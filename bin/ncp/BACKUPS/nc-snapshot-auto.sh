@@ -41,10 +41,10 @@ MOUNTPOINT="\$(stat -c "%m" "\$DATADIR")" || return 1
   exit 1
 }
 
-/usr/local/bin/btrfs-snp \$MOUNTPOINT hourly  24 3600    ../ncp-snapshots
-/usr/local/bin/btrfs-snp \$MOUNTPOINT daily    7 86400   ../ncp-snapshots
-/usr/local/bin/btrfs-snp \$MOUNTPOINT weekly   4 604800  ../ncp-snapshots
-/usr/local/bin/btrfs-snp \$MOUNTPOINT monthly 12 2592000 ../ncp-snapshots
+/usr/local/bin/btrfs-snp \$MOUNTPOINT hourly  24 3600    ../ncp-snapshots > /dev/null
+/usr/local/bin/btrfs-snp \$MOUNTPOINT daily    7 86400   ../ncp-snapshots > /dev/null
+/usr/local/bin/btrfs-snp \$MOUNTPOINT weekly   4 604800  ../ncp-snapshots > /dev/null
+/usr/local/bin/btrfs-snp \$MOUNTPOINT monthly 12 2592000 ../ncp-snapshots > /dev/null
 EOF
   chmod 755 /etc/cron.hourly/btrfs-snp
   echo "automatic snapshots enabled"
